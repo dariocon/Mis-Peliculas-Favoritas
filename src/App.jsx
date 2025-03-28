@@ -14,7 +14,20 @@ function App() {
 
   return (
     <div className="app-container">
-
+      <h1 className="app-title">Lista de Películas</h1>
+      <table className="peliculas-table">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          {peliculas.map((pelicula) => (
+            <Pelicula key={pelicula.id} pelicula={pelicula} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
