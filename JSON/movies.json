@@ -1,0 +1,108 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Joaquín Delhom",
+      "email": "joaquin@example.com",
+      "position": "Manager"
+    },
+    {
+      "id": "2",
+      "name": "Susana Palma",
+      "email": "susana@example.com",
+      "position": "Developer"
+    },
+    {
+      "id": "3",
+      "name": "Ana Millán",
+      "email": "ana@example.com",
+      "position": "Designer"
+    }
+  ],
+  "shifts": [
+    {
+      "id": "1",
+      "date": "2025-03-01",
+      "time": "08:00 - 16:00",
+      "employeeId": 1,
+      "status": "Pendiente"
+    },
+    {
+      "id": "2",
+      "date": "2025-03-02",
+      "time": "09:00 - 17:00",
+      "employeeId": 2,
+      "status": "Confirmado"
+    },
+    {
+      "id": "3",
+      "date": "2025-03-03",
+      "time": "10:00 - 18:00",
+      "employeeId": 3,
+      "status": "Confirmado"
+    },
+    {
+      "id": "91cf",
+      "date": "2025-03-02",
+      "time": "08:00 - 16:00",
+      "employeeId": "1",
+      "status": "Pendiente"
+    },
+    {
+      "id": "d5c6",
+      "date": "2025-02-12",
+      "time": "08:00 - 16:02",
+      "employeeId": "2",
+      "status": "Pendiente"
+    },
+    {
+      "id": "b0e9",
+      "date": "2025-02-12",
+      "time": "08:00 - 16:00",
+      "employeeId": "1",
+      "status": "Pendiente"
+    },
+    {
+      "id": "1d62",
+      "date": "",
+      "time": "08:00 - 16:00",
+      "employeeId": "2",
+      "status": "Pendiente"
+    },
+    {
+      "id": "619b",
+      "date": "2025-02-20",
+      "time": "08:00 - 16:00",
+      "employeeId": "3",
+      "status": "Confirmado"
+    },
+    {
+      "id": "10a6",
+      "date": "2025-03-19",
+      "time": "fdafda",
+      "employeeId": "1",
+      "status": "Pendiente"
+    },
+    {
+      "id": "798e",
+      "date": "2025-03-12",
+      "time": "dsaf",
+      "employeeId": "3",
+      "status": "Pendiente"
+    },
+    {
+      "id": "92b0",
+      "date": "2025-03-31",
+      "time": "08:00 - 16:01",
+      "employeeId": "2",
+      "status": "Confirmado"
+    },
+    {
+      "id": "fcef",
+      "date": "2025-03-27",
+      "time": "pi",
+      "employeeId": "3",
+      "status": "Confirmado"
+    }
+  ]
+}
