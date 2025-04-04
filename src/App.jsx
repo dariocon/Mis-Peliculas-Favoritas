@@ -74,6 +74,8 @@ function App() {
             <th>Descripción</th>
             <th>Género</th>
             <th>Reparto</th>
+            <th>Año</th>
+
 
 
           </tr>

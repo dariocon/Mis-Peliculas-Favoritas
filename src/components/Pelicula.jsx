@@ -33,6 +33,7 @@ const Pelicula = ({ pelicula, genero }) => {
           <p>Reparto no disponible </p>
         } </ul>  </td>
 
+      <td style={{ color: colorGenero }}>{pelicula.año}</td>
 
     </tr>
   );
