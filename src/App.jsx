@@ -13,6 +13,22 @@ function App() {
     { id: 4, title: 'Perfect Days', description: 'Hirayama parece totalmente satisfecho con su sencilla vida de limpiador de retretes en Tokio. Una serie de encuentros inesperados revelan poco a poco más de su pasado. '},
 
   ];*/
+    
+  let peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
+
+  const [favoritas, setFavoritas] = useState(peliculasFavoritas);
+
+  function changeToFavorite  (id) {
+
+    let favoritasActualizada;
+
+    favoritasActualizada = favoritas.filter(peliculaId => peliculaId !== id);
+
+    setFavoritas(favoritasActualizada);
+
+    localStorage.setItem('favoritas', JSON.stringify(favoritasActualizada));
+  };
+
 
   const peliculas = [
     {
@@ -63,7 +79,6 @@ function App() {
     },
 
   ];
-
   return (
     <div className="app-container">
       <h1 className="app-title">Lista de Películas</h1>
@@ -81,8 +96,10 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {peliculas.map((pelicula) => (
-            <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} />
+          {
+          peliculas.map((pelicula) => (
+            <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} fav={favoritas.includes(pelicula.id)}  /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
+
           ))}
         </tbody>
       </table>

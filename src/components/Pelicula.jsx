@@ -1,6 +1,20 @@
 import { useState } from 'react';
 
-const Pelicula = ({ pelicula, genero }) => {
+const Pelicula = ({ pelicula, genero, fav }) => {
+
+  //const [status, setStatus] = useState(fav);
+
+  function changeToFavorite  (id) {
+
+    let favoritasActualizada;
+
+    favoritasActualizada = favoritas.filter(peliculaId => peliculaId !== id);
+
+    setFavoritas(favoritasActualizada);
+
+    localStorage.setItem('favoritas', JSON.stringify(favoritasActualizada));
+  };
+
     const generoColores = {
         "Ciencia Ficción": 'red',
         "Acción": 'green',
@@ -15,19 +29,20 @@ const Pelicula = ({ pelicula, genero }) => {
       }
   return (
     <tr key={pelicula.id}>
-      <td style={{ color: colorGenero }}>{titulo}</td>
+      <td style={{ color: colorGenero }}>{titulo}
+        <button onClick={changeToFavorite}>Marcar como favorita</button>
+        {fav? ("❤️"): "🤍"}
+      </td>
       <td style={{ color: colorGenero }}>{pelicula.descripcion}</td>
       <td style={{ color: colorGenero }}>{pelicula.genero || "Genero no especificado"} </td>
       <td style={{ color: colorGenero }}> 
         <ul> 
         
         {pelicula.actores.length>0? (
-            pelicula.actores.map((actor) => ( 
-                    
+            pelicula.actores.map((actor) => (             
               <li key={actor}>
                   {actor}
               </li>
-
             ))
         ):
           <p>Reparto no disponible </p>
