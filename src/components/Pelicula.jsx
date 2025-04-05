@@ -1,19 +1,23 @@
 import { useState } from 'react';
 
-const Pelicula = ({ pelicula, genero, fav }) => {
+const Pelicula = ({ pelicula, genero, fav, setFavoritas, favoritas }) => {
 
-  //const [status, setStatus] = useState(fav);
+function changeToFavorite() {
+  let favoritasActualizada;
 
-  function changeToFavorite  (id) {
-
-    let favoritasActualizada;
-
-    favoritasActualizada = favoritas.filter(peliculaId => peliculaId !== id);
-
-    setFavoritas(favoritasActualizada);
-
-    localStorage.setItem('favoritas', JSON.stringify(favoritasActualizada));
-  };
+  if (favoritas.includes(pelicula.id)) {
+    // si es favorita y se ha pulsado el botón, se elimina 
+    favoritasActualizada = favoritas.filter(peliculaId => peliculaId !== pelicula.id);
+  } else {
+    // si es favorita y se ha pulsado el botón, se añade. con ... copiamos el array anterior y creamos uno nuevo al que añadimos la pelicula
+    favoritasActualizada = [...favoritas, pelicula.id];
+  }
+/*Necesitamos pasarle una copia actualizada al localstorage porque si hacemos push al array 
+original, no cambia la referencia, que es lo que React tiene en cuenta para saber si ha cambiado el array. 
+Lo mismo al eliminar*/
+  setFavoritas(favoritasActualizada);
+  localStorage.setItem('favoritas', JSON.stringify(favoritasActualizada));
+}
 
     const generoColores = {
         "Ciencia Ficción": 'red',

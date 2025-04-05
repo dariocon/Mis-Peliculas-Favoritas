@@ -6,28 +6,10 @@ import Pelicula from './components/Pelicula';
 
 function App() {
   
- /* const peliculas = [
-    { id: 1, title: 'El Señor de los Anillos', description: 'Una épica aventura en la Tierra Media.', genero:'Aventura' },
-    { id: 2, title: 'Matrix', description: 'Un hacker descubre la verdad detrás de su realidad.', genero:'Acción' },
-    { id: 3, title: 'Inception', description: 'Un ladrón roba ideas a través de sueños.', genero: 'Drama'},
-    { id: 4, title: 'Perfect Days', description: 'Hirayama parece totalmente satisfecho con su sencilla vida de limpiador de retretes en Tokio. Una serie de encuentros inesperados revelan poco a poco más de su pasado. '},
-
-  ];*/
     
-  let peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
-
+  let peliculasFavoritas = [];
+  peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
   const [favoritas, setFavoritas] = useState(peliculasFavoritas);
-
-  function changeToFavorite  (id) {
-
-    let favoritasActualizada;
-
-    favoritasActualizada = favoritas.filter(peliculaId => peliculaId !== id);
-
-    setFavoritas(favoritasActualizada);
-
-    localStorage.setItem('favoritas', JSON.stringify(favoritasActualizada));
-  };
 
 
   const peliculas = [
@@ -90,15 +72,13 @@ function App() {
             <th>Género</th>
             <th>Reparto</th>
             <th>Año</th>
-
-
-
           </tr>
         </thead>
         <tbody>
           {
           peliculas.map((pelicula) => (
-            <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} fav={favoritas.includes(pelicula.id)}  /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
+            <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} 
+            fav={favoritas.includes(pelicula.id)} setFavoritas={setFavoritas} favoritas={favoritas} /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
 
           ))}
         </tbody>
