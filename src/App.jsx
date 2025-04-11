@@ -3,17 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Pelicula from './components/Pelicula';
-
+import AddPelicula from "./components/AddPelicula";
 function App() {
   
-    
-  let peliculasFavoritas = [];
-  peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
-  const [favoritas, setFavoritas] = useState(peliculasFavoritas);
-
-
-  const peliculas = [
-    {
+const peliculasIniciales  = [
+  {
       id: 1,
       titulo: "Inception",
       descripcion: "Un ladrón que roba secretos a través de los sueños.",
@@ -53,14 +47,27 @@ function App() {
       actores: [],
       año: 2014
     },
-    { id: 6, 
+    { 
+      id: 6, 
       titulo: 'Perfect Days', 
-      descripcion: 'Hirayama parece totalmente satisfecho con su sencilla vida de limpiador de retretes en Tokio. Una serie de encuentros inesperados revelan poco a poco más de su pasado. ',
-      actores: [],
-      año: 2023
-    },
-
+      descripcion: 'Hirayama parece totalmente satisfecho con su sencilla vida de limpiador de retretes en Tokio. Una serie de encuentros inesperados revelan poco a poco más de su pasado.', 
+      actores: [], 
+      año: 2023 
+    }
   ];
+  let peliculasFavoritas = [];
+  peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
+  const [favoritas, setFavoritas] = useState(peliculasFavoritas);
+  const peliculasGuardadas = JSON.parse(localStorage.getItem('peliculas')) || peliculasIniciales;
+
+  const [peliculas, setPeliculas] = useState(peliculasGuardadas);
+
+  const addPelicula = (pelicula) => {
+    const nuevaLista = [...peliculas, pelicula];
+    setPeliculas(nuevaLista);
+    localStorage.setItem('peliculas', JSON.stringify(nuevaLista));
+  };
+
   return (
     <div className="app-container">
       <h1 className="app-title">Lista de Películas</h1>
@@ -78,11 +85,13 @@ function App() {
           {
           peliculas.map((pelicula) => (
             <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} 
-            fav={favoritas.includes(pelicula.id)} setFavoritas={setFavoritas} favoritas={favoritas} /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
+             setFavoritas={setFavoritas} favoritas={favoritas} /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
 
           ))}
         </tbody>
       </table>
+      <AddPelicula onAddPelicula={addPelicula} />
+
       <footer className="footer"></footer>
     </div>
   );

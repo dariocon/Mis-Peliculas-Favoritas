@@ -1,6 +1,11 @@
 import { useState } from 'react';
+import PropTypes from "prop-types";
 
-const Pelicula = ({ pelicula, genero, fav, setFavoritas, favoritas }) => {
+const Pelicula =  ({ pelicula, genero, setFavoritas, favoritas }) => {
+  
+ /* let peliculasFavoritas = [];
+  peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
+  const [favoritas, setFavoritas] = useState(peliculasFavoritas);*/
 
 function changeToFavorite() {
   let favoritasActualizada;
@@ -35,7 +40,7 @@ Lo mismo al eliminar*/
     <tr key={pelicula.id}>
       <td style={{ color: colorGenero }}>{titulo}
         <button onClick={changeToFavorite}>Marcar como favorita</button>
-        {fav? ("❤️"): "🤍"}
+        {favoritas.includes(pelicula.id)? ("❤️"): "🤍"}
       </td>
       <td style={{ color: colorGenero }}>{pelicula.descripcion}</td>
       <td style={{ color: colorGenero }}>{pelicula.genero || "Genero no especificado"} </td>
@@ -57,5 +62,15 @@ Lo mismo al eliminar*/
     </tr>
   );
 }
+
+Pelicula.propTypes = {
+  pelicula: PropTypes.shape({
+    id: PropTypes.number.isRequired,  
+    titulo: PropTypes.string.isRequired, 
+    descripcion: PropTypes.string.isRequired, 
+    actores: PropTypes.arrayOf(PropTypes.string),  
+    año: PropTypes.number.isRequired, 
+  }).isRequired
+};  
 
 export default Pelicula;
