@@ -5,57 +5,23 @@ import './App.css'
 import Pelicula from './components/Pelicula';
 import AddPelicula from "./components/AddPelicula";
 import { fetchPeliculas, addPelicula } from "./services/apiService"; 
-function App() {
-
-
-const [peliculas, setPeliculas] = useState([]);
-
-
-  useEffect(() => {
-    const loadPeliculas= async() => {
-      const dataPeliculas= await fetchPeliculas();
-      setPeliculas(dataPeliculas);
-    }
-    loadPeliculas();
-},[]);
-
-
-
-
-
-  const addPelicula = (pelicula) => {
-    const nuevaLista = [...peliculas, pelicula];
-    setPeliculas(nuevaLista);
-    localStorage.setItem('peliculas', JSON.stringify(nuevaLista));
-  };
-
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+const Router = () => {
   return (
-    <div className="app-container">
-      <h1 className="app-title">Lista de Películas</h1>
-      <table className="peliculas-table">
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Género</th>
-            <th>Reparto</th>
-            <th>Año</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-          peliculas.map((pelicula) => (
-            <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} 
-              /> 
-
-          ))}
-        </tbody>
-      </table>
-      <AddPelicula onAddPelicula={addPelicula} />
-
-      <footer className="footer"></footer>
-    </div>
-  );
+    <>
+      <BrowserRouter>
+        <Routes>   
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Navigate to="/home" replace/>}/>
+          <Route path="home" element={<Home/>}></Route>
+          <Route path="peliculas" element={<ListaPeliculas />}></Route>
+          <Route path="addpelicula" element={<AddPelicula />}></Route>
+          <Route path="*" element={<h1>Error 404</h1>}></Route>
+        </Route>
+      </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
 
-export default App;
+export default Router;
