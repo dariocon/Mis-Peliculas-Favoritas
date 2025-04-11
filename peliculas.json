@@ -1,0 +1,121 @@
+{
+  "peliculas": [
+    {
+      "id": "1",
+      "titulo": "Inception",
+      "descripcion": "Un ladrón que roba secretos a través de los sueños.",
+      "genero": "Ciencia Ficción",
+      "actores": [
+        "Leonardo DiCaprio",
+        "Joseph Gordon-Levitt",
+        "Elliot Page"
+      ],
+      "año": 2010,
+      "favorito": true
+    },
+    {
+      "id": "2",
+      "titulo": "The Dark Knight",
+      "descripcion": "Batman se enfrenta a su peor enemigo, el Joker.",
+      "genero": "Acción",
+      "actores": [
+        "Christian Bale",
+        "Heath Ledger",
+        "Aaron Eckhart"
+      ],
+      "año": 2008,
+      "favorito": true
+    },
+    {
+      "id": "3",
+      "titulo": "Forrest Gump",
+      "descripcion": "La vida de un hombre con un gran corazón a lo largo de la historia de EE.UU.",
+      "genero": "Drama",
+      "actores": [
+        "Tom Hanks",
+        "Robin Wright",
+        "Gary Sinise"
+      ],
+      "año": 1994,
+      "favorito": true
+    },
+    {
+      "id": "4",
+      "titulo": "The Grand Budapest Hotel",
+      "descripcion": "Un conserje y su aprendiz se ven envueltos en un misterio.",
+      "genero": "Comedia",
+      "actores": [
+        "Ralph Fiennes",
+        "Tony Revolori",
+        "Adrien Brody"
+      ],
+      "año": 2014,
+      "favorito": false
+    },
+    {
+      "id": "5",
+      "titulo": "Interstellar",
+      "descripcion": "Un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar.",
+      "genero": "Ciencia Ficción",
+      "actores": [],
+      "año": 2014,
+      "favorito": true
+    },
+    {
+      "id": "6",
+      "titulo": "Perfect Days",
+      "descripcion": "Hirayama parece totalmente satisfecho con su sencilla vida de limpiador de retretes en Tokio. Una serie de encuentros inesperados revelan poco a poco más de su pasado.",
+      "genero": "",
+      "actores": [],
+      "año": 2023,
+      "favorito": true
+    },
+    {
+      "id": "23c9",
+      "titulo": "fasfdas",
+      "descripcion": "afdasfa",
+      "genero": "Ciencia Ficción",
+      "actores": [
+        "fasdfas",
+        "fasdfdasfads"
+      ],
+      "año": "1987"
+    },
+    {
+      "id": "1b96",
+      "titulo": "gdxshds",
+      "descripcion": "hgdhfd",
+      "genero": "Ciencia Ficción",
+      "actores": [
+        "hgdhgd",
+        "thddgh"
+      ],
+      "año": "1987",
+      "status": true
+    },
+    {
+      "id": "2ece",
+      "titulo": "buena",
+      "descripcion": "fdgfas",
+      "genero": "Acción",
+      "actores": [
+        "dicaprio",
+        "juan"
+      ],
+      "año": "1999",
+      "favorito": true
+    },
+    {
+      "id": "da53",
+      "titulo": "dsada",
+      "descripcion": "fdafda",
+      "genero": "Ciencia Ficción",
+      "actores": [
+        "dfsa",
+        "fadadf"
+      ],
+      "año": "1999",
+      "favorito": true
+    }
+  ]
+}

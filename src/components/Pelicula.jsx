@@ -1,28 +1,30 @@
 import { useState } from 'react';
 import PropTypes from "prop-types";
 
-const Pelicula =  ({ pelicula, genero, setFavoritas, favoritas }) => {
+const Pelicula =  ({ pelicula, genero }) => {
   
- /* let peliculasFavoritas = [];
-  peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
-  const [favoritas, setFavoritas] = useState(peliculasFavoritas);*/
 
-function changeToFavorite() {
-  let favoritasActualizada;
 
-  if (favoritas.includes(pelicula.id)) {
-    // si es favorita y se ha pulsado el botón, se elimina 
-    favoritasActualizada = favoritas.filter(peliculaId => peliculaId !== pelicula.id);
-  } else {
-    // si es favorita y se ha pulsado el botón, se añade. con ... copiamos el array anterior y creamos uno nuevo al que añadimos la pelicula
-    favoritasActualizada = [...favoritas, pelicula.id];
-  }
-/*Necesitamos pasarle una copia actualizada al localstorage porque si hacemos push al array 
-original, no cambia la referencia, que es lo que React tiene en cuenta para saber si ha cambiado el array. 
-Lo mismo al eliminar*/
-  setFavoritas(favoritasActualizada);
-  localStorage.setItem('favoritas', JSON.stringify(favoritasActualizada));
+  const [status, setStatus] = useState(pelicula.favorito);
+
+
+  const changeStatus = async() => {
+    const newStatus=!status
+
+    try{
+        const response = await fetch(`http://localhost:3000/peliculas/${pelicula.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({favorito: newStatus})
+        })
+        setStatus(newStatus)
+    }catch(err) {
+        console.log("error al cambiar el estatus", err)
+    }
 }
+
 
     const generoColores = {
         "Ciencia Ficción": 'red',
@@ -39,8 +41,8 @@ Lo mismo al eliminar*/
   return (
     <tr key={pelicula.id}>
       <td style={{ color: colorGenero }}>{titulo}
-        <button onClick={changeToFavorite}>Marcar como favorita</button>
-        {favoritas.includes(pelicula.id)? ("❤️"): "🤍"}
+        <button onClick={changeStatus}>Marcar como favorita</button>
+        {status? ("❤️"): "🤍"}
       </td>
       <td style={{ color: colorGenero }}>{pelicula.descripcion}</td>
       <td style={{ color: colorGenero }}>{pelicula.genero || "Genero no especificado"} </td>

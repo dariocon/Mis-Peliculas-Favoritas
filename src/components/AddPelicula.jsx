@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addPelicula } from "../services/apiService"; 
 
 const AddPelicula = ({ onAddPelicula }) => {
   const [nuevaPelicula, setNuevaPelicula] = useState({
@@ -14,18 +15,24 @@ const AddPelicula = ({ onAddPelicula }) => {
     setNuevaPelicula({ ...nuevaPelicula, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+
+
+  async function handleSubmit(event) {
     event.preventDefault();
-
-    const peliculaConFormato = {
-      ...nuevaPelicula,
-      id: Math.floor(Math.random() * 1000000), 
-      actores: nuevaPelicula.actores.split(",").map((actor) => actor.trim()),
-    };
-
-    onAddPelicula(peliculaConFormato);
-    setNuevaPelicula({ titulo: "", descripcion: "", genero: "", actores: "", año: "" });
-  };
+    
+    try {
+      const peliculaConFormato = {
+        ...nuevaPelicula,
+        actores: nuevaPelicula.actores.split(",").map((actor) => actor.trim()),
+      }
+      const peliculaAñadida = await addPelicula(peliculaConFormato);
+      onAddPelicula(peliculaAñadida); 
+      setNuevaPelicula({ titulo: "", descripcion: "", genero: "", actores: "", año: "" });
+    } catch (err) {
+      console.log("Error al añadir la película", err);
+    }
+  }
+  
 
   return (
     <form className="add-pelicula-form" onSubmit={handleSubmit}>
