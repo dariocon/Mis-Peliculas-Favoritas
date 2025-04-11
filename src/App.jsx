@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Pelicula from './components/Pelicula';
 import AddPelicula from "./components/AddPelicula";
+import { fetchPeliculas, addPelicula } from "./services/apiService"; 
 function App() {
-  
+  /*
 const peliculasIniciales  = [
   {
       id: 1,
@@ -54,13 +55,22 @@ const peliculasIniciales  = [
       actores: [], 
       año: 2023 
     }
-  ];
-  let peliculasFavoritas = [];
-  peliculasFavoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
-  const [favoritas, setFavoritas] = useState(peliculasFavoritas);
-  const peliculasGuardadas = JSON.parse(localStorage.getItem('peliculas')) || peliculasIniciales;
+  ];*/
 
-  const [peliculas, setPeliculas] = useState(peliculasGuardadas);
+
+  const [peliculas, setPeliculas] = useState([]);
+
+  useEffect(() => {
+    const loadPeliculas= async() => {
+      const dataPeliculas= await fetchPeliculas();
+      setPeliculas(dataPeliculas);
+    }
+    loadPeliculas();
+},[]);
+
+
+
+
 
   const addPelicula = (pelicula) => {
     const nuevaLista = [...peliculas, pelicula];
@@ -85,7 +95,7 @@ const peliculasIniciales  = [
           {
           peliculas.map((pelicula) => (
             <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} 
-             setFavoritas={setFavoritas} favoritas={favoritas} /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
+              /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
 
           ))}
         </tbody>
