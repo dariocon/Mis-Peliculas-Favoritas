@@ -26,6 +26,9 @@ const Pelicula =  ({ pelicula, genero }) => {
 }
 
 
+
+
+
     const generoColores = {
         "Ciencia Ficción": 'red',
         "Acción": 'green',

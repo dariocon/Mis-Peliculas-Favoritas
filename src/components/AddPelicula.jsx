@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { addPelicula } from "../services/apiService"; 
 
 const AddPelicula = ({ onAddPelicula }) => {
   const [nuevaPelicula, setNuevaPelicula] = useState({
@@ -9,6 +8,24 @@ const AddPelicula = ({ onAddPelicula }) => {
     actores: "",
     año: "",
   });
+
+
+
+  
+  const addPelicula = async(pelicula) => {
+    try {
+        const response = await fetch("http://localhost:3000/peliculas", {
+            method:"POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(pelicula),
+        });
+        return await response.json();
+    }catch(err) {
+        console.log("error al añadir la pelicula", err)
+    }
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;

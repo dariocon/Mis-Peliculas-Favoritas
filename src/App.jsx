@@ -4,61 +4,18 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Pelicula from './components/Pelicula';
 import AddPelicula from "./components/AddPelicula";
-import { fetchPeliculas, addPelicula } from "./services/apiService"; 
 function App() {
-  /*
-const peliculasIniciales  = [
-  {
-      id: 1,
-      titulo: "Inception",
-      descripcion: "Un ladrón que roba secretos a través de los sueños.",
-      genero: "Ciencia Ficción",
-      actores: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
-      año: 2010
-    },
-    {
-      id: 2,
-      titulo: "The Dark Knight",
-      descripcion: "Batman se enfrenta a su peor enemigo, el Joker.",
-      genero: "Acción",
-      actores: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
-      año: 2008
-    },
-    {
-      id: 3,
-      titulo: "Forrest Gump",
-      descripcion: "La vida de un hombre con un gran corazón a lo largo de la historia de EE.UU.",
-      genero: "Drama",
-      actores: ["Tom Hanks", "Robin Wright", "Gary Sinise"],
-      año: 1994
-    },
-    {
-      id: 4,
-      titulo: "The Grand Budapest Hotel",
-      descripcion: "Un conserje y su aprendiz se ven envueltos en un misterio.",
-      genero: "Comedia",
-      actores: ["Ralph Fiennes", "Tony Revolori", "Adrien Brody"],
-      año: 2014
-    },
-    {
-      id: 5,
-      titulo: "Interstellar",
-      descripcion: "Un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar.",
-      genero: "Ciencia Ficción",
-      actores: [],
-      año: 2014
-    },
-    { 
-      id: 6, 
-      titulo: 'Perfect Days', 
-      descripcion: 'Hirayama parece totalmente satisfecho con su sencilla vida de limpiador de retretes en Tokio. Una serie de encuentros inesperados revelan poco a poco más de su pasado.', 
-      actores: [], 
-      año: 2023 
-    }
-  ];*/
 
 
-  const [peliculas, setPeliculas] = useState([]);
+const [peliculas, setPeliculas] = useState([]);
+const fetchPeliculas = async() => {
+  try{
+      const response= await fetch("http://localhost:3000/peliculas")
+      return await response.json();
+  }catch(err) {
+      console.log("Error al obtener las peliculas", err);
+  }
+}
 
   useEffect(() => {
     const loadPeliculas= async() => {
@@ -95,7 +52,7 @@ const peliculasIniciales  = [
           {
           peliculas.map((pelicula) => (
             <Pelicula key={pelicula.id} pelicula={pelicula} genero={pelicula.genero} 
-              /> // no puedo poner dentro const fav = favoritas.includes(pelicula.id); del map 
+              /> 
 
           ))}
         </tbody>
