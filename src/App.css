@@ -73,3 +73,71 @@ html, body {
   background-color: transparent;
   flex-shrink: 0;
 }
+/* Estilo general de la página */
+body {
+  background-color: #f4f4f4; /* Fondo claro */
+  color: #333; /* Texto oscuro para contraste */
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos del formulario */
+.add-pelicula-form {
+  max-width: 800px; /* Aumento del ancho máximo */
+  width: 100%; /* Asegura que ocupe el 100% del espacio disponible hasta el máximo */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff; /* Fondo blanco para el formulario */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: 1px solid #ddd; /* Borde suave */
+}
+
+.add-pelicula-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333; /* Título en color oscuro */
+}
+
+/* Estilo para las etiquetas de los inputs */
+.add-pelicula-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555; /* Color suave para las etiquetas */
+}
+
+/* Estilo de los inputs, textarea y select */
+.add-pelicula-form input,
+.add-pelicula-form textarea,
+.add-pelicula-form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc; /* Bordes suaves */
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fafafa; /* Fondo blanco/ligeramente gris para los inputs */
+  color: #333; /* Texto oscuro dentro de los inputs */
+}
+
+.add-pelicula-form textarea {
+  height: 120px;
+}
+
+.add-pelicula-form button {
+  background-color: #007bff; /* Botón de color azul */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.add-pelicula-form button:hover {
+  background-color: #0056b3; /* Color de fondo cuando se pasa el ratón */
+}
