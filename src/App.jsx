@@ -4,18 +4,12 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Pelicula from './components/Pelicula';
 import AddPelicula from "./components/AddPelicula";
+import { fetchPeliculas, addPelicula } from "./services/apiService"; 
 function App() {
 
 
 const [peliculas, setPeliculas] = useState([]);
-const fetchPeliculas = async() => {
-  try{
-      const response= await fetch("http://localhost:3000/peliculas")
-      return await response.json();
-  }catch(err) {
-      console.log("Error al obtener las peliculas", err);
-  }
-}
+
 
   useEffect(() => {
     const loadPeliculas= async() => {

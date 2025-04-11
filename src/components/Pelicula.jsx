@@ -1,32 +1,12 @@
 import { useState } from 'react';
 import PropTypes from "prop-types";
+import { changeStatus } from "../services/apiService"; 
 
 const Pelicula =  ({ pelicula, genero }) => {
   
 
 
   const [status, setStatus] = useState(pelicula.favorito);
-
-
-  const changeStatus = async() => {
-    const newStatus=!status
-
-    try{
-        const response = await fetch(`http://localhost:3000/peliculas/${pelicula.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({favorito: newStatus})
-        })
-        setStatus(newStatus)
-    }catch(err) {
-        console.log("error al cambiar el estatus", err)
-    }
-}
-
-
-
 
 
     const generoColores = {
@@ -44,7 +24,7 @@ const Pelicula =  ({ pelicula, genero }) => {
   return (
     <tr key={pelicula.id}>
       <td style={{ color: colorGenero }}>{titulo}
-        <button onClick={changeStatus}>Marcar como favorita</button>
+        <button onClick={() => changeStatus(status, setStatus, pelicula)}>Marcar como favorita</button>
         {status? ("❤️"): "🤍"}
       </td>
       <td style={{ color: colorGenero }}>{pelicula.descripcion}</td>
